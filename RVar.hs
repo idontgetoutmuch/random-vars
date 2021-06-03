@@ -3,8 +3,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE MultiParamTypeClasses      #-}
 {-# LANGUAGE RankNTypes                 #-}
-{-# LANGUAGE BangPatterns               #-}
-{-# LANGUAGE GADTs                      #-}
 
 module RVar where
 
@@ -18,12 +16,10 @@ import qualified Control.Monad.IO.Class as T
 
 import           System.Random.Stateful (StatefulGen, StdGen, STGenM
                                         , uniformWord32, uniformShortByteString
-                                        , uniformRM, uniformM, uniformDoublePositive01M
+                                        , uniformDoublePositive01M
                                         , mkStdGen, newSTGenM)
 
 import qualified Data.Vector.Unboxed as I
-import           Control.Monad (liftM)
-import           Data.Bits ((.&.))
 
 import           Data.Word(Word32)
 

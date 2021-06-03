@@ -1,11 +1,3 @@
-{-# LANGUAGE DerivingStrategies         #-}
-{-# LANGUAGE FlexibleContexts           #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE MultiParamTypeClasses      #-}
-{-# LANGUAGE RankNTypes                 #-}
-{-# LANGUAGE BangPatterns               #-}
-{-# LANGUAGE GADTs                      #-}
-
 module Main (main) where
 
 import RVar

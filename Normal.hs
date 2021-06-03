@@ -1,27 +1,13 @@
-{-# LANGUAGE DerivingStrategies         #-}
-{-# LANGUAGE FlexibleContexts           #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE MultiParamTypeClasses      #-}
-{-# LANGUAGE RankNTypes                 #-}
 {-# LANGUAGE BangPatterns               #-}
-{-# LANGUAGE GADTs                      #-}
 
 module Normal (Normal(..)) where
 
 import           RVar
 
-import           Control.Monad.Trans (MonadTrans (..))
-import           Control.Monad.Trans.Free.Church (FT, liftF, iterT)
-
-import           Control.Monad.ST (ST, runST)
-import           Control.Monad.Trans.Reader (ReaderT, ask, runReaderT)
-import qualified Control.Monad.Trans.Class as T
-import qualified Control.Monad.IO.Class as T
-
-import           System.Random.Stateful (StatefulGen, StdGen, STGenM
-                                        , uniformWord32, uniformShortByteString
-                                        , uniformRM, uniformM, uniformDoublePositive01M
-                                        , mkStdGen, newSTGenM)
+import           System.Random.Stateful (StatefulGen
+                                        , uniformRM, uniformM
+                                        )
 
 import qualified Data.Vector.Unboxed as I
 import           Control.Monad (liftM)
