@@ -1,0 +1,80 @@
+cabal-version:      2.0
+name:               monad-bayes
+version:            0.0.0.1
+license:            MIT
+license-file:       LICENSE.md
+copyright:          2020 Dominic Steinitz
+maintainer:         dominic@steinitz.org
+author:             Dominic Steinitz <dominic@steinitz.org>
+stability:          experimental
+-- tested-with:        ghc ==8.4.4 ghc ==8.6.5 ghc ==8.8.1
+homepage:           http://github.com/idontgetoutmuch/random-vars
+bug-reports:        https://github.com/idontgetoutmuch/random-vars/issues
+synopsis:           Random variables
+description:
+  Random number generation based on modeling random
+  variables by an abstract type ('RVar') which can be
+  composed and manipulated monadically and sampled in
+  either monadic or \"pure\" styles. This may be a lie.
+
+category:           Statistics
+build-type:         Simple
+extra-source-files: CHANGELOG.md
+
+source-repository head
+    type:     git
+    location: https://github.com/idontgetoutmuch/random-vars.git
+
+-- library
+--     exposed-modules:
+--         Control.Monad.Bayes.Class
+
+--     hs-source-dirs:   src
+--     default-language: Haskell2010
+--     build-depends:
+--         base >=4.11 && <4.15,
+--         -- containers >=0.5.10 && <0.7,
+--         free >=5.0.2 && <5.2,
+--         -- hmatrix,
+--         -- ieee754 >=0.8.0 && <0.9,
+--         -- log-domain >=0.12 && <0.14,
+--         -- math-functions >=0.2.1 && <0.4,
+--         -- monad-coroutine >=0.9.0 && <0.10,
+--         -- mtl >=2.2.2 && <2.3,
+--         primitive,
+--         random,
+--         -- random-fu,
+--         -- random-fu-multivariate,
+--         -- safe >=0.3.17 && <0.4,
+--         -- statistics >=0.14.0 && <0.16,
+--         -- transformers >=0.5.2 && <0.6,
+--         -- vector >=0.12.0 && <0.13
+
+--     if flag(dev)
+--         ghc-options:
+--             -Weverything -Wno-missing-local-signatures -Wno-unsafe
+--             -Wno-missing-import-lists -Wno-implicit-prelude
+--             -Wno-monomorphism-restriction
+
+--     else
+--         ghc-options: -Wall
+
+executable main
+    main-is:          Main.hs
+    hs-source-dirs:
+
+    default-language: Haskell2010
+    build-depends:
+        base -any,
+        bytestring,
+        erf,
+        free >=5.0.2 && <5.2,
+        mtl >=2.2.2 && <2.3,
+        random,
+        transformers >=0.5.6 && <0.6,
+        vector
+
+    ghc-options:
+        -Weverything -Wno-missing-local-signatures
+        -Wno-missing-import-lists -Wno-implicit-prelude
+        -Wno-monomorphism-restriction
