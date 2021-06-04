@@ -11,17 +11,13 @@ import           Control.Monad.Trans.Free.Church (FT, liftF, iterT)
 
 import           Control.Monad.ST (ST, runST)
 import           Control.Monad.Trans.Reader (ReaderT, ask, runReaderT)
-import qualified Control.Monad.Trans.Class as T
-import qualified Control.Monad.IO.Class as T
 
 import           System.Random.Stateful (StatefulGen, StdGen, STGenM
                                         , uniformWord32, uniformShortByteString
                                         , uniformDoublePositive01M
                                         , mkStdGen, newSTGenM)
 
-import qualified Data.Vector.Unboxed as I
-
-import           Data.Word(Word32)
+import           Data.Word (Word32)
 
 
 -- | Random sampling functor.
@@ -42,9 +38,6 @@ class Monad m => MonadSample m where
   random' ::
     -- | \(\sim \mathcal{U}(0, 1)\)
     m Double
-
-instance MonadSample (RVarT m) where
-  random' = RVarT $ liftF (Random id)
 
 -- | An 'ST' based random sampler using the @random@ package.
 newtype SamplerST a = SamplerST (forall s . ReaderT (STGenM StdGen s) (ST s) a)
@@ -79,12 +72,7 @@ class Distribution d t where
     -- |Return a random variable with this distribution.
     rvar :: d t -> RVarT m t
 
-
-
 data RGen = RGen
-
-instance T.MonadIO m => T.MonadIO (RVarT m) where
-    liftIO = T.lift . T.liftIO
 
 instance StatefulGen RGen (RVarT m) where
   uniformWord32 RGen            = RVarT $ liftF (Random f)
