@@ -12,6 +12,8 @@ myHaskellPackageOverlay = self: super: {
         }) "" { }
       ))) [ ];
 
+      mwc-random = hself.callHackage "mwc-random" "0.15.0.1" {};
+
       hashable = super.haskell.lib.doJailbreak hsuper.hashable;
 
     };
@@ -26,14 +28,14 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, bytestring, erf, free, lib, mtl, random, transformers, vector }:
+  f = { mkDerivation, base, bytestring, erf, free, lib, MonadPrompt, mtl, mwc-random, random, transformers, vector }:
       mkDerivation {
         pname = "monad-bayes";
         version = "0.0.0.1";
         src = ./.;
         isLibrary = false;
         isExecutable = true;
-        executableHaskellDepends = [ base bytestring erf free mtl random transformers vector ];
+        executableHaskellDepends = [ base bytestring erf free MonadPrompt mtl mwc-random random transformers vector ];
         homepage = "http://github.com/idontgetoutmuch/random-vars";
         description = "Random variables";
         license = lib.licenses.mit;

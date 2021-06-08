@@ -1,9 +1,9 @@
 {-# LANGUAGE MultiParamTypeClasses      #-}
 {-# LANGUAGE BangPatterns               #-}
 
-module Normal (Normal(..)) where
+module NormalPrim (Normal(..)) where
 
-import           RVar
+import           Prim
 import           PreNormal
 
 instance Distribution Normal Double where
