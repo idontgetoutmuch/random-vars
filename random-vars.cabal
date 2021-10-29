@@ -1,5 +1,5 @@
 cabal-version:      2.0
-name:               monad-bayes
+name:               free-monad-comparison
 version:            0.0.0.1
 license:            MIT
 license-file:       LICENSE.md
@@ -25,21 +25,31 @@ source-repository head
     type:     git
     location: https://github.com/idontgetoutmuch/random-vars.git
 
-executable main
-    main-is:          Main.hs
+executable prompt
+    main-is:          PurePrompt.hs
     hs-source-dirs:
 
     default-language: Haskell2010
     build-depends:
         base -any,
-        bytestring,
-        free >=5.0.2 && <5.2,
         MonadPrompt,
-        mtl >=2.2.2 && <2.3,
-        mwc-random,
+        random
+
+    ghc-options:
+        -Weverything -Wno-missing-local-signatures
+        -Wno-missing-import-lists -Wno-implicit-prelude
+        -Wno-monomorphism-restriction -Wno-unsafe
+
+executable freechurch
+    main-is:          PureFreeChurch.hs
+    hs-source-dirs:
+
+    default-language: Haskell2010
+    build-depends:
+        base -any,
+        free >=5.0.2 && <5.2,
         random,
-        transformers >=0.5.6 && <0.6,
-        vector
+        transformers >=0.5.6 && <0.6
 
     ghc-options:
         -Weverything -Wno-missing-local-signatures

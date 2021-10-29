@@ -8,7 +8,6 @@
 {-# LANGUAGE TypeOperators             #-}
 
 import Control.Monad
-import Data.Functor.Sum
 import Data.Word
 import System.Random.Stateful
 import Control.Monad.Prompt (PromptT, MonadPrompt(..), runPromptTM)
